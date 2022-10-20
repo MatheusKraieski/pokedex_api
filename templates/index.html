@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>POKEDEX</title>
 </head>
 <body class="bg-amber-400 flex justify-center ">
     <div class="m-10 w-4/12 flex justify-center">
@@ -16,8 +16,11 @@
                 <button class="bg-neutral-100 p-2 rounded-lg bg-amber-400"type=submit" name="buscar">Buscar</button> <br>
                 <h3 class="text-3xl text-center text-white font-bold uppercase mt-4">{{nome}}</h3>
                 <img class="w-80 bg-neutral-100 p-2 rounded-lg m-2 " src="{{foto}}" alt="">
-                <div class="text-center text-white text-lg uppercase">{{tipo1}}</div>
-                <div class="text-center">{{tipo2}}</div>
+                <div class="flex justify-center text-center text-white text-lg uppercase">
+                    <h1 class="mr-2">{{tipo1}} •</h1>
+                    <h1 class="">{{tipo2}}</h1>
+                </div>
+            
             </form>
     </div>
     </div>

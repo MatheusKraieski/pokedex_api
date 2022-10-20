@@ -1,4 +1,5 @@
 from ast import Try
+from ssl import AlertDescription
 from flask.globals import request
 from models.pokemon import Pokemon
 from flask import Flask, render_template
@@ -22,11 +23,11 @@ def buscar():
         pokemon.foto = result
         if len(res["types"])==2:
             pokemon.tipo1 = res["types"][0]["type"]["name"]
-            pokemon.tipo1 = res["types"][1]["type"]["name"]
+            pokemon.tipo2 = res["types"][1]["type"]["name"]
         else:
             pokemon.tipo1 = res["types"][0]["type"]["name"]   
     except:
-        return "pokemon nao encontrado"    
+        return "pokemon não encontrado"
     return render_template("index.html", 
     nome = pokemon.nome,
     foto = pokemon.foto,
