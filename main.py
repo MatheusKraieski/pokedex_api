@@ -19,7 +19,7 @@ def buscar():
     try:
         res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon.nome}").text)
         result = res["sprites"]
-        result = result["other"]["official-artwork"]["front_default"]
+        result = result["front_default"]
         pokemon.foto = result
         if len(res["types"])==2:
             pokemon.tipo1 = res["types"][0]["type"]["name"]
