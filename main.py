@@ -15,24 +15,29 @@ def index():
 
 @app.route("/buscar", methods = ["GET", "post"])
 def buscar():
-    pokemon = Pokemon(request.form["nome"].lower() ,"","","")
+    pokemon = Pokemon(request.form["nome"].lower() ,"","","","")
     try:
         res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon.nome}").text)
         result = res["sprites"]
         result = result["other"]["official-artwork"]["front_default"]
         pokemon.foto = result
+        pokemon.golpes = []
+        for i in range(0, len(res.get("moves"))):
+            pokemon.golpes.append(res.get("moves")[i].get("move").get("name"))
+
         if len(res["types"])==2:
-            pokemon.tipo1 = res["types"][0]["type"]["name"]
+            pokemon.tipo1 = res.get("types")[0].get("type").get("name")
             pokemon.tipo2 = res["types"][1]["type"]["name"]
         else:
-            pokemon.tipo1 = res["types"][0]["type"]["name"]   
+            pokemon.tipo1 = res.get("types")[0].get("type").get("name")   
     except:
         return "pokemon não encontrado"
     return render_template("index.html", 
     nome = pokemon.nome,
     foto = pokemon.foto,
     tipo1 = pokemon.tipo1,
-    tipo2 = pokemon.tipo2
+    tipo2 = pokemon.tipo2,
+    golpes = pokemon.golpes
 
     )
 
