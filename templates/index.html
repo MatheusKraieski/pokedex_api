@@ -7,17 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>POKEDEX</title>
 </head>
-<body class="bg-amber-300 flex justify-center mt-10">
-    <div class="m-10 w-96 flex justify-center drop-shadow-lg">
+<body class="bg-amber-400 flex justify-center ">
+    <div class="m-10 w-4/12 flex justify-center">
         <div class=" bg-rose-700 p-8 rounded-lg ">
             <h1 class="text-lg text-center text-white font-bold mb-4 text-4xl ">POKEDEX</h1>
-            <form class="flex flex-wrap justify-center" action="buscar" method="POST">
-                <input class=" bg-neutral-100 rounded-lg p-2" placeholder="Buscar Pokemon" name="nome" type="text">
-                <button class=" ml-2 bg-neutral-100 p-2 rounded-lg"type=submit" name="buscar">Buscar</button> <br>
+            <form action="buscar" method="POST">
+                <input class="bg-neutral-100 rounded-lg p-2" placeholder="Buscar Pokemon" name="nome" type="text">
+                <button class="bg-neutral-100 p-2 rounded-lg bg-amber-400"type=submit" name="buscar">Buscar</button> <br>
                 <h3 class="text-3xl text-center text-white font-bold uppercase mt-4">{{nome}}</h3>
                 <img class="w-80 bg-neutral-100 p-2 rounded-lg m-2 " src="{{foto}}" alt="">
                 <div class="flex justify-center text-center text-white text-lg uppercase">
-                    <h1 class="mr-2">{{tipo1}}</h1>
+                    <h1 class="mr-2">{{tipo1}} •</h1>
                     <h1 class="">{{tipo2}}</h1>
                 </div>       
             
