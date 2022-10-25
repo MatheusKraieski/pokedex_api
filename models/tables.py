@@ -1,4 +1,5 @@
 from app import db
+db.create_all()
 
 class User(db.model):
     __tablename__ = "users"
