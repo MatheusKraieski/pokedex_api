@@ -1,24 +1,39 @@
-from ast import Try
-from ssl import AlertDescription
 from flask.globals import request
-from models.pokemon import Pokemon
 from flask import Flask, render_template
 import requests
 import json
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
 db = SQLAlchemy(app)
+
+class User(db.model):
+    __tablename__ = "users"
+    id = Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
+    name = db.Column(db.String)
+    emial = db.Column(db.String, unique=True)
+
+    def __repr__(self):
+        return "<User %r>" % self.usarname
+
+class Pokemon:
+    def __init__(self,nome,foto, tipo1, tipo2, golpes):
+        self.nome=nome
+        self.foto=foto
+        self.tipo1=tipo1
+        self.tipo2=tipo2
+        self.golpes=golpes
 
 
 
 @app.route("/")
 def index():
     return render_template('index.html') 
+
 
 
 @app.route("/buscar", methods = ["GET", "post"])
